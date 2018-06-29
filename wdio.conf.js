@@ -149,12 +149,17 @@ exports.config = {
     global.Assertion = chai.Assertion
     global.assert = chai.assert
     chai.Should()
-  }
+  },
   //
   // Hook that gets executed before the suite starts
   // beforeSuite: function (suite) {
   // },
-  //
+  
+  
+
+
+  
+  
   // Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
   // beforeEach in Mocha)
   // beforeHook: function () {
@@ -162,8 +167,21 @@ exports.config = {
   //
   // Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
   // afterEach in Mocha)
-  // afterHook: function () {
-  // },
+  afterHook: function () {
+      
+  var request = require('request');
+var webhook = 'https://hooks.slack.com/services/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';
+var text = 'Error!'
+request.post('https://hooks.slack.com/services/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', (err, body) => {
+request ({
+ method: 'POST',
+ url: webhook,
+ json: {
+     "text": "SandBox test completed "}
+});
+
+});    
+   },
   //
   // Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
   // beforeTest: function (test) {
@@ -195,3 +213,4 @@ exports.config = {
   // onComplete: function(exitCode) {
   // }
 }
+ 

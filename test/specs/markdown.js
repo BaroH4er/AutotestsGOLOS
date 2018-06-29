@@ -1,15 +1,24 @@
-describe('Markdown', ()=> {
+var request = require('request');
+var webhook = 'https://hooks.slack.com/services/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';
 
+
+describe('Markdown', ()=> {
+request.post('', (err, body) => {
+request ({
+ method: 'POST',
+ url: webhook,
+ json: {
+     "text": "Markdown test start "}
+});
+
+});
     it('/submit - OK', ()=> {
         browser.url('https://sandbox.golos.io/submit')
         browser.getTitle().should.be.equal('Создать пост | GOLOS.io Блоги')
     });
 
     
-    /*it('Registration - OK', ()=> {
-        browser.url('https://sandbox.golos.io/create_account')
-        browser.getTitle().should.be.equal('GOLOS.io Блоги')
-        browser.url('')
+    it('Check links', ()=> {
         let links = browser.elements('a')
 
         for (let i=0; i < links.value.length; i++) {
@@ -27,5 +36,20 @@ describe('Markdown', ()=> {
             })
 
           expect(status).to.be.true;
-        }*/
+        }
+         
     });
+    
+    it('Report', ()=> {
+request.post('', (err, body) => {
+request ({
+ method: 'POST',
+ url: webhook,
+ json: {
+     "text": "Markdown test completed "}
+});
+
+});
+});
+  
+});
